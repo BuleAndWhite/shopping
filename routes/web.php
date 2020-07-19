@@ -14,5 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/jia/login/{id?}/{emil?}/{phone?}','Ja\loginController@index');
+Route::any('index/loginout','F1\WuYuController@loginout');
+Route::group(['prefix' => 'login', 'namespace' => 'F1'], function(){
+     Route::any('index','WuYuController@index');
+     Route::any('login','WuYuController@login');
+});
+Route::group(['prefix' => 'index', 'namespace' => 'Index'], function(){
+     Route::any('index','IndexController@index');
+});
